@@ -227,9 +227,9 @@ public class Grid {
         Tile t = go.GetComponent<Tile>();
         if (t == null) return matches;
         
-        for (int row = Mathf.Max(t.Row-2,0); row < Mathf.Max(t.Row+3,Common.Rows); ++row)
+        for (int row = Mathf.Max(t.Row-2,0); row < Mathf.Min(t.Row+3,Common.Rows); ++row)
         {
-            for( int col = Mathf.Max(t.Column - 2, 0); col < Mathf.Max(t.Column + 3, Common.Columns); ++col )
+            for( int col = Mathf.Max(t.Column - 2, 0); col < Mathf.Min(t.Column + 3, Common.Columns); ++col )
             {
                 if (Tiles[row, col] != null)
                 {

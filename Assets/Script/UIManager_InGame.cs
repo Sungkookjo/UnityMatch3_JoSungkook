@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class UIManager_InGame : MonoBehaviour {
 
+    public int stage;
+
     // public properties
     public GameObject QuitMenuObj = null;
 
@@ -14,12 +16,17 @@ public class UIManager_InGame : MonoBehaviour {
     public Text ScoreTxt = null;
     public Text OverCondiTxt = null;
     public Text ClearCondiTxt = null;
+    public Text stagetext = null;
 
     public static UIManager_InGame instance;
 
     // Use this for initialization
     void Start () {
-        instance = this;		
+        instance = this;
+        if( GameManager.Instance != null )
+        {
+            GameManager.Instance.AfterUIMgrInstanced();
+        }
 	}
 	
 	// Update is called once per frame
@@ -70,5 +77,15 @@ public class UIManager_InGame : MonoBehaviour {
         {
             ResultTxt.text = bClear ? "Clear" : "Over";
         }
+    }
+
+    public void UpdateStageTitle(int idx)
+    {
+        stage = idx;
+        if (stagetext != null)
+            if( stage <= 0 )
+                stagetext.text = "Custom Stage";
+            else
+                stagetext.text = stage + " Stage ";
     }
 }

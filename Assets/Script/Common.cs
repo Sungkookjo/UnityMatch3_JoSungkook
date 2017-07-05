@@ -29,5 +29,5 @@ public static class Common{
     public static readonly int AreaBombMatches = 3;
     public static readonly int SameTileBombMatches = 5;
 
-    public static readonly int ClearScore = 1100;
+    public static readonly int ClearScore = 1500;
 }

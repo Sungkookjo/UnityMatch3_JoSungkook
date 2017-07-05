@@ -17,6 +17,7 @@ public class UIUtility : MonoBehaviour
 
     public void OnClick_StageButton( int StageIndex )
     {
+        PlayerPrefs.SetInt("Stage", StageIndex);
         LoadLevel(1);
     }
 

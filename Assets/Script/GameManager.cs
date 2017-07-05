@@ -40,6 +40,7 @@ public class GameManager : MonoBehaviour {
 
     private int score;
     private int combo;
+    private int stage;
 
     private EGameState state = EGameState.Idle;
     private GameObject hitGo = null;
@@ -67,6 +68,24 @@ public class GameManager : MonoBehaviour {
         GameResult = EGameResult.Playing;
     }
 
+    public void AfterUIMgrInstanced()
+    {
+        if( gameOverCondi != null )
+        {
+            gameOverCondi.NotiUpdateUI();
+        }
+
+        if (gameClearCondi != null)
+        {
+            gameClearCondi.NotiUpdateUI();
+        }
+
+        ShowScore();
+
+        if (UIManager_InGame.instance != null)
+            UIManager_InGame.instance.UpdateStageTitle(stage);
+    }
+
     private void InitializeGameSettings()
     {
         if( TileKindNum <= 0 )
@@ -77,19 +96,22 @@ public class GameManager : MonoBehaviour {
         hitGo = null;
         state = EGameState.Idle;
 
+        if( PlayerPrefs.HasKey("Stage") )
+            stage = PlayerPrefs.GetInt("Stage");
+
         // {{ set Over Conditions
         gameOverCondi = new GameOverCondition();
         gameOverCondi.type = EGameOverCondition.Turn;
         gameOverCondi.iCond = 15;
-        gameOverCondi.NotiUpdateUI();
         // }} 
 
-        // {{ set Clear COnditions
+        // {{ set Clear Conditions
         gameClearCondi = new GameClearCondition();
         gameClearCondi.type = EGameClearCondition.Score;
         gameClearCondi.iCond = Common.ClearScore;
-        gameClearCondi.NotiUpdateUI();
         // }}
+
+        AfterUIMgrInstanced();
 }
 
     private void InitializePrefab()
