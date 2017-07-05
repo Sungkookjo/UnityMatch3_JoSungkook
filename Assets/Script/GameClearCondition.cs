@@ -10,26 +10,44 @@ public enum EGameClearCondition
 
 public class GameClearCondition
 {
-    public EGameClearCondition type;
-    public float fCond;
-    public int iCond;
-    public GameObject oCond;
+    protected EGameClearCondition type;
+    protected float fCond;
+    protected int iCond;
+    protected GameObject oCond;
+
+    public void InitCond(int condType, int condVal)
+    {
+        type = (EGameClearCondition)condType;
+
+        fCond = (float)condVal;
+        iCond = condVal;
+    }
 
     public void UpdateScore( int score )
     {
         if( type == EGameClearCondition.Score )
         {
-            if( score >= iCond )
+            if ( score >= iCond )
             {
                 NotiGameClear();
             }
-            NotiUpdateUI();
+            // NotiUpdateUI();
         }
     }
 
     public void OnRemoveTile( GameObject item)
     {
+        if( type == EGameClearCondition.Explode )
+        {
+            --iCond;
 
+            NotiUpdateUI();
+
+            if (iCond <= 0)
+            {
+                NotiGameClear();
+            }
+        }
     }
 
     protected void NotiGameClear()

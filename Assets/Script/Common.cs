@@ -4,8 +4,8 @@ using UnityEngine;
 
 public static class Common{
     // 
-    public static readonly Vector2 BottomRight = new Vector2(-2.7f, -3.5f);
-    public static readonly Vector2 TileSize = new Vector2(0.67f, 0.67f);
+    public static readonly Vector2 BottomRight = new Vector2(-2.5f, -3.5f);
+    public static readonly Vector2 TileSize = new Vector2(0.62f, 0.62f);
 
     public static readonly int Rows = 10;
     public static readonly int Columns = 9;

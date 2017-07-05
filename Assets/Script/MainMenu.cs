@@ -4,11 +4,15 @@ using UnityEngine;
 
 public class MainMenu : MonoBehaviour {
 
+    public static MainMenu instance = null;
+        
     // public properties
     public GameObject QuitMenuObj = null;
+    public GameObject StageMenu = null;
 
     // Use this for initialization
     void Start() {
+        instance = this;
     }
 
     // Update is called once per frame
@@ -21,6 +25,18 @@ public class MainMenu : MonoBehaviour {
             if (QuitMenuObj != null)
             {
                 QuitMenuObj.SetActive(!QuitMenuObj.activeInHierarchy);
+            }
+        }
+    }
+
+    public void ShowStageMenu()
+    {
+        if( StageMenu != null )
+        {
+            StageMenu.SetActive(true);
+            if( StageMenu.GetComponent<StageMenu>() != null )
+            {
+                StageMenu.GetComponent<StageMenu>().InitStageInfo();
             }
         }
     }

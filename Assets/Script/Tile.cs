@@ -24,6 +24,7 @@ public class Tile : MonoBehaviour {
     public Sprite[] TileSprites = new Sprite[(int)ETileAbility.Max];
     protected ETileState State { get; set;  }
     protected Vector3 MoveGoal { get; set;  }
+    protected float moveSpeed { get; set; }
     protected float MoveDuration { get; set; }
 
     public bool isExplode { get; set; }
@@ -85,6 +86,7 @@ public class Tile : MonoBehaviour {
         MoveGoal = position;
         MoveDuration = movetime;
         State = ETileState.Move;
+        moveSpeed = (gameObject.transform.position - position).magnitude / movetime;
     }
 
     public static void SwapTile(Tile a, Tile b)
@@ -112,7 +114,7 @@ public class Tile : MonoBehaviour {
     {
         if( State == ETileState.Move )
         {
-            gameObject.transform.position = Vector3.Lerp(gameObject.transform.position, MoveGoal, Time.deltaTime / MoveDuration);
+            gameObject.transform.position = Vector3.MoveTowards( gameObject.transform.position, MoveGoal, moveSpeed * Time.deltaTime);
 
             MoveDuration -= Time.deltaTime;
 

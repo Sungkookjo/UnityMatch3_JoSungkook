@@ -84,7 +84,7 @@ public class UIManager_InGame : MonoBehaviour {
         stage = idx;
         if (stagetext != null)
             if( stage <= 0 )
-                stagetext.text = "Custom Stage";
+                stagetext.text = "Custom";
             else
                 stagetext.text = stage + " Stage ";
     }

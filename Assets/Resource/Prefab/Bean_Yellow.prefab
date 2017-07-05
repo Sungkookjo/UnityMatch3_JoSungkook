@@ -83,7 +83,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 13f10b53259fffa4088c7767535f0132, type: 3}
   - {fileID: 21300000, guid: 506f0f9d07f823c4ab5c635643d4a9a7, type: 3}
   - {fileID: 21300000, guid: 412ec0a4a01414145a1dfdd31e97e3f7, type: 3}
-  - {fileID: 21300000, guid: f21adda198d6038469a62af590f4794b, type: 3}
+  - {fileID: 21300000, guid: 86dbc63e9a27d4946838046ab983a7ec, type: 3}
   score: 20
 --- !u!212 &212010155566901790
 SpriteRenderer:

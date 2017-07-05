@@ -85,6 +85,18 @@
     <Reference Include="Facebook.Unity.Settings">
       <HintPath>Library\FacebookSDK\Facebook.Unity.Settings.dll</HintPath>
     </Reference>
+    <Reference Include="System.Data">
+      <HintPath>Assets\Plugins\SQLiter\DLLs\System.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Data.SqliteClient">
+      <HintPath>Assets\Plugins\SQLiter\DLLs\Mono.Data.SqliteClient.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="UnityMatch3_JoSungkook.Plugins.csproj">
+      <Project>{73E3E0B3-9F41-AEE4-AF3C-66EBE7EE4022}</Project>
+      <Name>UnityMatch3_JoSungkook.Plugins</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Script\AlteredTileInfo.cs" />
@@ -98,11 +110,13 @@
     <Compile Include="Assets\Script\MatchesInfo.cs" />
     <Compile Include="Assets\Script\SoundManager.cs" />
     <Compile Include="Assets\Script\SoundOption.cs" />
+    <Compile Include="Assets\Script\StageMenu.cs" />
     <Compile Include="Assets\Script\Tile.cs" />
     <Compile Include="Assets\Script\UIManager_InGame.cs" />
     <Compile Include="Assets\Script\UIUtility.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\Plugins\SQLiter\README.txt" />
     <None Include="Assets\Resource\Fantasy SFX for Particle Distort Texture effect library\readme_Fantasy SFX for Particle Distort Texture effect library.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

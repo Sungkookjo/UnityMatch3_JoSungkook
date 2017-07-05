@@ -96,19 +96,22 @@ public class GameManager : MonoBehaviour {
         hitGo = null;
         state = EGameState.Idle;
 
-        if( PlayerPrefs.HasKey("Stage") )
-            stage = PlayerPrefs.GetInt("Stage");
+        stage = StagePrefs.GetStage();
 
         // {{ set Over Conditions
         gameOverCondi = new GameOverCondition();
-        gameOverCondi.type = EGameOverCondition.Turn;
-        gameOverCondi.iCond = 15;
+        gameOverCondi.InitCond(
+            StagePrefs.GetValue(EStageColumn.OverCondType, stage),
+            StagePrefs.GetValue(EStageColumn.OverCondValue, stage)
+            );
         // }} 
 
         // {{ set Clear Conditions
         gameClearCondi = new GameClearCondition();
-        gameClearCondi.type = EGameClearCondition.Score;
-        gameClearCondi.iCond = Common.ClearScore;
+        gameClearCondi.InitCond(
+            StagePrefs.GetValue(EStageColumn.ClearCondType, stage),
+            StagePrefs.GetValue(EStageColumn.ClearCondValue, stage)
+            );
         // }}
 
         AfterUIMgrInstanced();
@@ -149,12 +152,14 @@ public class GameManager : MonoBehaviour {
 
     public void NotifyGameOver()
     {
-        GameResult = EGameResult.Over;
+        if (GameResult == EGameResult.Playing)
+            GameResult = EGameResult.Over;
     }
 
     public void NotifyGameClear()
     {
-        GameResult = EGameResult.Clear;
+        if(GameResult == EGameResult.Playing)
+            GameResult = EGameResult.Clear;
     }
 
     public void ShowResult( bool bClear )
@@ -168,6 +173,16 @@ public class GameManager : MonoBehaviour {
         gameClearCondi = null;
 
         GameResult = EGameResult.Result;
+
+        if(bClear)
+        {
+            var BestScore = StagePrefs.GetValue(EStageColumn.BestScore, stage);
+            if (BestScore < score)
+            {
+                StagePrefs.SetValue(EStageColumn.BestScore, stage, score);
+            }
+        }
+
     }
 
     private GameObject GetRandomTile()
@@ -455,17 +470,20 @@ public class GameManager : MonoBehaviour {
 
             totalMatches.AddRange(MatchInfo.MatchedTiles);
 
-            foreach (var item in totalMatches)
+            if(tragetTile.Ability != ETileAbility.None )
             {
-                yield return new WaitForSeconds(Common.SameTileBombMotionDelay);
+                foreach (var item in totalMatches)
+                {
+                    yield return new WaitForSeconds(Common.SameTileBombMotionDelay);
 
-                if (item == null) continue;
+                    if (item == null) continue;
 
-                Tile t = item.GetComponent<Tile>();
+                    Tile t = item.GetComponent<Tile>();
 
-                if (t == null) continue;
+                    if (t == null) continue;
 
-                t.SetSpecailAbility(tragetTile.Ability);
+                    t.SetSpecailAbility(tragetTile.Ability);
+                }
             }
         }
         else

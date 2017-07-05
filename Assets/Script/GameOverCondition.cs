@@ -10,10 +10,17 @@ public enum EGameOverCondition
 
 public class GameOverCondition
 {
-    public EGameOverCondition type;
-    public float fCond;
-    public int iCond;
-    public GameObject oCond;
+    protected EGameOverCondition type;
+    protected float fCond;
+    protected int iCond;
+
+    public void InitCond(int condType, int condVal)
+    {
+        type = (EGameOverCondition)condType;
+
+        fCond = (float)condVal;
+        iCond = condVal;
+    }
 
     public void UpdateTime( float DeltaTime )
     {
@@ -39,6 +46,7 @@ public class GameOverCondition
 
             if( iCond <= 0 )
             {
+                iCond = 0;
                 NotiGameOver();
             }
 
@@ -64,7 +72,7 @@ public class GameOverCondition
         switch( type )
         {
             case EGameOverCondition.Time:
-                return fCond.ToString();
+                return ((int)fCond).ToString();
             case EGameOverCondition.Turn:
                 return iCond.ToString();
         }
