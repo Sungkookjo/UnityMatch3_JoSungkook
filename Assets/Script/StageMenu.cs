@@ -9,6 +9,7 @@ public class StageMenu : MonoBehaviour
 
     public Text stageOverTxt;
     public Text stageClearTxt;
+    public Text stageTileTxt;
     public Text stageHighScoreTxt;
 
     public void InitStageInfo()
@@ -41,6 +42,12 @@ public class StageMenu : MonoBehaviour
                 stageClearTxt.text = ((EGameClearCondition)StagePrefs.GetValue(EStageColumn.ClearCondType, stage)).ToString()
                     + " : " 
                     + StagePrefs.GetValue(EStageColumn.ClearCondValue, stage);
+            }
+
+            // Tiles num
+            if(stageTileTxt != null )
+            {
+                stageTileTxt.text = "Tiles : " + StagePrefs.GetValue(EStageColumn.TileKindNum, stage);
             }
 
             // High score

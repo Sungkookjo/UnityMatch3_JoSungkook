@@ -527,6 +527,25 @@ public class Grid {
         return matches.Distinct();
     }
 
+    public IEnumerable<GameObject> GetMatchesAndGivAlibity( IEnumerable<GameObject> gos )
+    {
+        List<GameObject> matches = new List<GameObject>();
+        MatchesInfo MatchInfo = null;
+
+        foreach (var go in gos)
+        {
+            MatchInfo = GetMatches(go);
+            matches.AddRange(MatchInfo.MatchedTiles);
+            if (MatchInfo.NewAbility != ETileAbility.None && go.GetComponent<Tile>().Ability == ETileAbility.None)
+            {
+                matches.Remove(go);
+                go.GetComponent<Tile>().SetSpecailAbility(MatchInfo.NewAbility);
+            }
+        }
+
+        return matches.Distinct();
+    }
+
     public IEnumerable<TileInfo> GetEmptyItemsOnColumn(int column)
     {
         List<TileInfo> emptyItems = new List<TileInfo>();

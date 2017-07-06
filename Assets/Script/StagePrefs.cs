@@ -5,6 +5,7 @@ using UnityEngine;
 public enum EStageColumn
 {
     StageLevel,
+    TileKindNum,
     OverCondType,
     OverCondValue,
     ClearCondType,
@@ -13,7 +14,7 @@ public enum EStageColumn
 }
 public class StagePrefs : MonoBehaviour {
 
-    public bool forceUpdate = false;
+    protected const float PrefsVer = 1.1f;
     protected const string StageStr = "Stage";
 
     #region GetprefName
@@ -53,9 +54,26 @@ public class StagePrefs : MonoBehaviour {
     // Use this for initialization
     void Start () {
         
-        if (!PlayerPrefs.HasKey("InitStagePrefs")|| forceUpdate )
+        if( !PlayerPrefs.HasKey("InitStagePrefs") )
         {
-            PlayerPrefs.SetInt("InitStagePrefs", 0);
+            #region BestScore
+            PlayerPrefs.SetInt(GetPrefName(EStageColumn.BestScore, 0), 0);
+            PlayerPrefs.SetInt(GetPrefName(EStageColumn.BestScore, 1), 0);
+            PlayerPrefs.SetInt(GetPrefName(EStageColumn.BestScore, 2), 0);
+            PlayerPrefs.SetInt(GetPrefName(EStageColumn.BestScore, 3), 0);
+            PlayerPrefs.SetInt(GetPrefName(EStageColumn.BestScore, 4), 0);
+            PlayerPrefs.SetInt(GetPrefName(EStageColumn.BestScore, 5), 0);
+            PlayerPrefs.SetInt(GetPrefName(EStageColumn.BestScore, 6), 0);
+            PlayerPrefs.SetInt(GetPrefName(EStageColumn.BestScore, 7), 0);
+            PlayerPrefs.SetInt(GetPrefName(EStageColumn.BestScore, 8), 0);
+            PlayerPrefs.SetInt(GetPrefName(EStageColumn.BestScore, 9), 0);
+            #endregion
+        }
+
+        if (!PlayerPrefs.HasKey("InitStagePrefs") || PlayerPrefs.GetFloat("StagePrefsVer") < PrefsVer)
+        {
+            PlayerPrefs.SetInt("InitStagePrefs", 1);
+            PlayerPrefs.SetFloat("StagePrefsVer", PrefsVer);
 
             SetStage(0);
 
@@ -87,15 +105,15 @@ public class StagePrefs : MonoBehaviour {
 
             #region OverCondValue
             PlayerPrefs.SetInt(GetPrefName(EStageColumn.OverCondValue, 0), 1);
-            PlayerPrefs.SetInt(GetPrefName(EStageColumn.OverCondValue, 1), 60);
-            PlayerPrefs.SetInt(GetPrefName(EStageColumn.OverCondValue, 2), 45);
-            PlayerPrefs.SetInt(GetPrefName(EStageColumn.OverCondValue, 3), 30);
+            PlayerPrefs.SetInt(GetPrefName(EStageColumn.OverCondValue, 1), 30);
+            PlayerPrefs.SetInt(GetPrefName(EStageColumn.OverCondValue, 2), 25);
+            PlayerPrefs.SetInt(GetPrefName(EStageColumn.OverCondValue, 3), 20);
             PlayerPrefs.SetInt(GetPrefName(EStageColumn.OverCondValue, 4), 15);
-            PlayerPrefs.SetInt(GetPrefName(EStageColumn.OverCondValue, 5), 60);
-            PlayerPrefs.SetInt(GetPrefName(EStageColumn.OverCondValue, 6), 45);
-            PlayerPrefs.SetInt(GetPrefName(EStageColumn.OverCondValue, 7), 35);
-            PlayerPrefs.SetInt(GetPrefName(EStageColumn.OverCondValue, 8), 25);
-            PlayerPrefs.SetInt(GetPrefName(EStageColumn.OverCondValue, 9), 15);
+            PlayerPrefs.SetInt(GetPrefName(EStageColumn.OverCondValue, 5), 30);
+            PlayerPrefs.SetInt(GetPrefName(EStageColumn.OverCondValue, 6), 35);
+            PlayerPrefs.SetInt(GetPrefName(EStageColumn.OverCondValue, 7), 30);
+            PlayerPrefs.SetInt(GetPrefName(EStageColumn.OverCondValue, 8), 45);
+            PlayerPrefs.SetInt(GetPrefName(EStageColumn.OverCondValue, 9), 60);
             #endregion
 
             #region ClearCondType
@@ -124,18 +142,19 @@ public class StagePrefs : MonoBehaviour {
             PlayerPrefs.SetInt(GetPrefName(EStageColumn.ClearCondValue, 9), 75);
             #endregion
 
-            #region BestScore
-            PlayerPrefs.SetInt(GetPrefName(EStageColumn.BestScore, 0), 0);
-            PlayerPrefs.SetInt(GetPrefName(EStageColumn.BestScore, 1), 0);
-            PlayerPrefs.SetInt(GetPrefName(EStageColumn.BestScore, 2), 0);
-            PlayerPrefs.SetInt(GetPrefName(EStageColumn.BestScore, 3), 0);
-            PlayerPrefs.SetInt(GetPrefName(EStageColumn.BestScore, 4), 0);
-            PlayerPrefs.SetInt(GetPrefName(EStageColumn.BestScore, 5), 0);
-            PlayerPrefs.SetInt(GetPrefName(EStageColumn.BestScore, 6), 0);
-            PlayerPrefs.SetInt(GetPrefName(EStageColumn.BestScore, 7), 0);
-            PlayerPrefs.SetInt(GetPrefName(EStageColumn.BestScore, 8), 0);
-            PlayerPrefs.SetInt(GetPrefName(EStageColumn.BestScore, 9), 0);
+            #region TileKindNum
+            PlayerPrefs.SetInt(GetPrefName(EStageColumn.TileKindNum, 0), 1);
+            PlayerPrefs.SetInt(GetPrefName(EStageColumn.TileKindNum, 1), 6);
+            PlayerPrefs.SetInt(GetPrefName(EStageColumn.TileKindNum, 2), 7);
+            PlayerPrefs.SetInt(GetPrefName(EStageColumn.TileKindNum, 3), 8);
+            PlayerPrefs.SetInt(GetPrefName(EStageColumn.TileKindNum, 4), 9);
+            PlayerPrefs.SetInt(GetPrefName(EStageColumn.TileKindNum, 5), 6);
+            PlayerPrefs.SetInt(GetPrefName(EStageColumn.TileKindNum, 6), 6);
+            PlayerPrefs.SetInt(GetPrefName(EStageColumn.TileKindNum, 7), 7);
+            PlayerPrefs.SetInt(GetPrefName(EStageColumn.TileKindNum, 8), 8);
+            PlayerPrefs.SetInt(GetPrefName(EStageColumn.TileKindNum, 9), 9);
             #endregion
+
         }
     }
 }

@@ -88,15 +88,19 @@ public class GameManager : MonoBehaviour {
 
     private void InitializeGameSettings()
     {
-        if( TileKindNum <= 0 )
-        {
-            TileKindNum = TilePrefabs.Length;
-        }
-
         hitGo = null;
         state = EGameState.Idle;
 
         stage = StagePrefs.GetStage();
+
+        TileKindNum = StagePrefs.GetValue(EStageColumn.TileKindNum, stage);
+
+        if (TileKindNum <= 0)
+        {
+            TileKindNum = TilePrefabs.Length;
+        }
+
+        TileKindNum = Math.Min( TileKindNum, TilePrefabs.Length );
 
         // {{ set Over Conditions
         gameOverCondi = new GameOverCondition();
@@ -445,6 +449,7 @@ public class GameManager : MonoBehaviour {
         var t1 = hitGo.GetComponent<Tile>();
         var t2 = hitGo2.GetComponent<Tile>();
         List<GameObject> totalMatches;
+        MatchesInfo MatchInfo = null;
 
         totalMatches = new List<GameObject>();
         
@@ -460,9 +465,7 @@ public class GameManager : MonoBehaviour {
             }
 
             yield return new WaitForSeconds(Common.AnimationDuration);
-
-            MatchesInfo MatchInfo = null;
-
+            
             totalMatches.Add(hitGo);
             totalMatches.Add(hitGo2);
 
@@ -501,8 +504,7 @@ public class GameManager : MonoBehaviour {
                 StartCheckForPotentialMatches();
                 yield break;
             }
-
-            MatchesInfo MatchInfo = null;
+            
             // Calc first hit obj bonus
             MatchInfo = GameGrid.GetMatches(hitGo);
             totalMatches.AddRange(MatchInfo.MatchedTiles);
@@ -592,8 +594,10 @@ public class GameManager : MonoBehaviour {
 
                 //search if there are matches with the new/collapsed items
                 totalMatches.Clear();
-                totalMatches.AddRange( GameGrid.GetMatches(collapsedTileInfo.AlteredTile).
-                    Union(GameGrid.GetMatches(newTileInfo.AlteredTile)).Distinct() );
+                totalMatches.AddRange( GameGrid.GetMatchesAndGivAlibity(collapsedTileInfo.AlteredTile).
+                    Union(GameGrid.GetMatchesAndGivAlibity(newTileInfo.AlteredTile)).Distinct() );
+
+                totalMatches.Distinct();
 
                 if (totalMatches.Count >= Common.MinimumMatches)
                 {
