@@ -6,6 +6,7 @@ public enum EGameOverCondition
 {
     Time,
     Turn,
+    Max,
 }
 
 public class GameOverCondition

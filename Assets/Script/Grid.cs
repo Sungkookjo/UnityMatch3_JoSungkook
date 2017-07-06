@@ -290,8 +290,8 @@ public class Grid {
 
         matches.Add(t.gameObject);
         if ( column - 3 >= 0
-            && t.IsSameType(Tiles[row, column - 2].GetComponent<Tile>())
-            && t.IsSameType(Tiles[row, column - 3].GetComponent<Tile>())
+            && Tiles[row, column - 2]  != null && t.IsSameType(Tiles[row, column - 2].GetComponent<Tile>())
+            && Tiles[row, column - 3]  != null && t.IsSameType(Tiles[row, column - 3].GetComponent<Tile>())
             )
         {
             matches.Add(Tiles[row, column - 2]);
@@ -300,8 +300,8 @@ public class Grid {
         }
 
         if( column +3 < Common.Columns
-            && t.IsSameType(Tiles[row, column + 2].GetComponent<Tile>())
-            && t.IsSameType(Tiles[row, column + 3].GetComponent<Tile>())
+            && Tiles[row, column + 2] != null && t.IsSameType(Tiles[row, column + 2].GetComponent<Tile>())
+            && Tiles[row, column + 3] != null && t.IsSameType(Tiles[row, column + 3].GetComponent<Tile>())
             )
         {
             matches.Add(Tiles[row, column + 2]);
@@ -319,19 +319,19 @@ public class Grid {
         matches.Add(t.gameObject);
         if (column - 2 >= 0)
         {
-            if( row - 1 >= 0
-                && t.IsSameType(Tiles[row-1, column - 1].GetComponent<Tile>())
-                && t.IsSameType(Tiles[row-1, column - 2].GetComponent<Tile>())
+            if (row - 1 >= 0
+                && Tiles[row - 1, column - 1] != null && t.IsSameType(Tiles[row - 1, column - 1].GetComponent<Tile>())
+                && Tiles[row - 1, column - 2] != null && t.IsSameType(Tiles[row - 1, column - 2].GetComponent<Tile>())
                 )
             {
-                matches.Add(Tiles[row-1, column - 1]);
-                matches.Add(Tiles[row-1, column - 2]);
+                matches.Add(Tiles[row - 1, column - 1]);
+                matches.Add(Tiles[row - 1, column - 2]);
                 return matches;
             }
 
-            if( row + 1 < Common.Rows
-                && t.IsSameType(Tiles[row + 1, column - 1].GetComponent<Tile>())
-                && t.IsSameType(Tiles[row + 1, column - 2].GetComponent<Tile>())
+            if (row + 1 < Common.Rows
+                && Tiles[row + 1, column - 1] != null && t.IsSameType(Tiles[row + 1, column - 1].GetComponent<Tile>())
+                && Tiles[row + 1, column - 2] != null && t.IsSameType(Tiles[row + 1, column - 2].GetComponent<Tile>())
                 )
             {
                 matches.Add(Tiles[row + 1, column - 1]);
@@ -534,6 +534,9 @@ public class Grid {
 
         foreach (var go in gos)
         {
+            // 중복 검사 제거
+            if (matches.Find( item => (item == go ) ) != null)
+                continue;
             MatchInfo = GetMatches(go);
             matches.AddRange(MatchInfo.MatchedTiles);
             if (MatchInfo.NewAbility != ETileAbility.None && go.GetComponent<Tile>().Ability == ETileAbility.None)

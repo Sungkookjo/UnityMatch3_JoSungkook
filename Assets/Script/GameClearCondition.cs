@@ -7,6 +7,7 @@ public enum EGameClearCondition
     Score,
     Explode,
     Infinite,
+    Max,
 }
 
 public class GameClearCondition

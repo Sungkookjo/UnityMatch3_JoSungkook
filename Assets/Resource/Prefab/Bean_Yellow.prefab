@@ -84,6 +84,10 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 506f0f9d07f823c4ab5c635643d4a9a7, type: 3}
   - {fileID: 21300000, guid: 412ec0a4a01414145a1dfdd31e97e3f7, type: 3}
   - {fileID: 21300000, guid: 86dbc63e9a27d4946838046ab983a7ec, type: 3}
+  TileExplodeEffect: {fileID: 1074955731325942, guid: 1f5d1d721dd701c4abf6adf714938ecc,
+    type: 2}
+  TileExplodeScaleBean: {fileID: 1948178933892434, guid: a14955ae87ad1d14ab9f7756e45cb3d9,
+    type: 2}
   score: 20
 --- !u!212 &212010155566901790
 SpriteRenderer:

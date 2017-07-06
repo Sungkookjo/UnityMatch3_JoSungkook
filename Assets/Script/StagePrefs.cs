@@ -14,7 +14,7 @@ public enum EStageColumn
 }
 public class StagePrefs : MonoBehaviour {
 
-    protected const float PrefsVer = 1.1f;
+    protected const float PrefsVer = 1.2f;
     protected const string StageStr = "Stage";
 
     #region GetprefName
@@ -91,7 +91,7 @@ public class StagePrefs : MonoBehaviour {
             #endregion
 
             #region OverCondType
-            PlayerPrefs.SetInt(GetPrefName(EStageColumn.OverCondType,0), 1);
+            PlayerPrefs.SetInt(GetPrefName(EStageColumn.OverCondType,0), 0);
             PlayerPrefs.SetInt(GetPrefName(EStageColumn.OverCondType,1), 1);
             PlayerPrefs.SetInt(GetPrefName(EStageColumn.OverCondType,2), 1);
             PlayerPrefs.SetInt(GetPrefName(EStageColumn.OverCondType,3), 1);
@@ -130,7 +130,7 @@ public class StagePrefs : MonoBehaviour {
             #endregion
 
             #region ClearCondValue
-            PlayerPrefs.SetInt(GetPrefName(EStageColumn.ClearCondValue, 0), 1);
+            PlayerPrefs.SetInt(GetPrefName(EStageColumn.ClearCondValue, 0), 1100);
             PlayerPrefs.SetInt(GetPrefName(EStageColumn.ClearCondValue, 1), 1500);
             PlayerPrefs.SetInt(GetPrefName(EStageColumn.ClearCondValue, 2), 1100);
             PlayerPrefs.SetInt(GetPrefName(EStageColumn.ClearCondValue, 3), 1100);
@@ -143,7 +143,7 @@ public class StagePrefs : MonoBehaviour {
             #endregion
 
             #region TileKindNum
-            PlayerPrefs.SetInt(GetPrefName(EStageColumn.TileKindNum, 0), 1);
+            PlayerPrefs.SetInt(GetPrefName(EStageColumn.TileKindNum, 0), 6);
             PlayerPrefs.SetInt(GetPrefName(EStageColumn.TileKindNum, 1), 5);
             PlayerPrefs.SetInt(GetPrefName(EStageColumn.TileKindNum, 2), 6);
             PlayerPrefs.SetInt(GetPrefName(EStageColumn.TileKindNum, 3), 7);

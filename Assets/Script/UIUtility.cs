@@ -14,6 +14,20 @@ public class UIUtility : MonoBehaviour
 #endif // UNITY_EDITOR
     }
 
+    public void OnClick_CustomStageButton()
+    {
+        StagePrefs.SetStage(0);
+
+        if (MainMenu.instance != null && MainMenu.instance.CustomStageMenu != null)
+        {
+            MainMenu.instance.ShowCustomStageMenu();
+        }
+        else
+        {
+            LoadLevel(1);
+        }
+    }
+
     public void OnClick_StageButton( int StageIndex )
     {
         StagePrefs.SetStage(StageIndex);

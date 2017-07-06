@@ -2346,6 +2346,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114427704681496912, guid: b868eb333b5165e40a7b2b5cded34d9c,
+        type: 2}
+      propertyPath: TilePrefabs.Array.size
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 4291132071815582, guid: b868eb333b5165e40a7b2b5cded34d9c, type: 2}
       propertyPath: m_LocalPosition.x
       value: 86.30554
@@ -2404,6 +2409,18 @@ Prefab:
       propertyPath: TilePrefabs.Array.data[2]
       value: 
       objectReference: {fileID: 1628574371994034, guid: 46adedd54d91f374b902a68d66d3cd86,
+        type: 2}
+    - target: {fileID: 114427704681496912, guid: b868eb333b5165e40a7b2b5cded34d9c,
+        type: 2}
+      propertyPath: TilePrefabs.Array.data[3]
+      value: 
+      objectReference: {fileID: 1517376255872494, guid: fcf21625db808ba4f9ed8581b0409432,
+        type: 2}
+    - target: {fileID: 114427704681496912, guid: b868eb333b5165e40a7b2b5cded34d9c,
+        type: 2}
+      propertyPath: TilePrefabs.Array.data[7]
+      value: 
+      objectReference: {fileID: 1489051551938248, guid: d07f82ccd37534c49a116b0746761bb3,
         type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b868eb333b5165e40a7b2b5cded34d9c, type: 2}
@@ -3318,7 +3335,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 200, y: -198.84998}
+  m_AnchoredPosition: {x: 200, y: -198.84995}
   m_SizeDelta: {x: 380, y: 105.899994}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1491575104
@@ -4030,7 +4047,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 200, y: -350.2}
+  m_AnchoredPosition: {x: 200, y: -350.20004}
   m_SizeDelta: {x: 400, y: 67.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2075563853

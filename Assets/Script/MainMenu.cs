@@ -9,6 +9,7 @@ public class MainMenu : MonoBehaviour {
     // public properties
     public GameObject QuitMenuObj = null;
     public GameObject StageMenu = null;
+    public GameObject CustomStageMenu = null;
 
     // Use this for initialization
     void Start() {
@@ -37,6 +38,19 @@ public class MainMenu : MonoBehaviour {
             if( StageMenu.GetComponent<StageMenu>() != null )
             {
                 StageMenu.GetComponent<StageMenu>().InitStageInfo();
+            }
+        }
+    }
+
+    public void ShowCustomStageMenu()
+    {
+        if (CustomStageMenu != null)
+        {
+            CustomStageMenu.SetActive(true);
+
+            if (CustomStageMenu.GetComponent<CustomStageMenu>() != null)
+            {
+                CustomStageMenu.GetComponent<CustomStageMenu>().InitStageInfo();
             }
         }
     }
