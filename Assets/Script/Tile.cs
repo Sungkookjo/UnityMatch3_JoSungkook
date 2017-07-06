@@ -22,6 +22,9 @@ public class Tile : MonoBehaviour {
     }
 
     public Sprite[] TileSprites = new Sprite[(int)ETileAbility.Max];
+    public GameObject TileExplodeEffect = null;
+    public GameObject TileExplodeScaleBean = null;
+
     protected ETileState State { get; set;  }
     protected Vector3 MoveGoal { get; set;  }
     protected float moveSpeed { get; set; }
@@ -129,9 +132,20 @@ public class Tile : MonoBehaviour {
     public void Explode()
     {
         // Play explosion effect
-        //GameObject explosion = GetRandomExplosion();
-        //var newExplosion = Instantiate(explosion, item.transform.position, Quaternion.identity) as GameObject;
-        //Destroy(newExplosion, Constants.ExplosionDuration);
+        if(TileExplodeEffect != null )
+        {
+            var newExplosion = Instantiate(TileExplodeEffect, gameObject.transform.position, Quaternion.identity) as GameObject;
+            Destroy(newExplosion, Common.ExplosionDuration);
+        }
+
+        // if need scale effect
+        if(TileExplodeScaleBean != null && Ability != ETileAbility.None && Ability != ETileAbility.DestroySameTile )
+        {
+            var ScaleEffect = Instantiate(TileExplodeScaleBean, gameObject.transform.position, Quaternion.identity) as GameObject;
+
+            ScaleEffect.GetComponent<ExplodedUpdate>().Explosion(gameObject, Ability);
+            Destroy(ScaleEffect, Common.ExplosionDuration);
+        }
 
         isExplode = true;
     }

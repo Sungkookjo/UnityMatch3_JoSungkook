@@ -90,6 +90,7 @@
     <Compile Include="Assets\Script\AlteredTileInfo.cs" />
     <Compile Include="Assets\Script\CheatToggle.cs" />
     <Compile Include="Assets\Script\Common.cs" />
+    <Compile Include="Assets\Script\ExplodedUpdate.cs" />
     <Compile Include="Assets\Script\GameClearCondition.cs" />
     <Compile Include="Assets\Script\GameManager.cs" />
     <Compile Include="Assets\Script\GameOverCondition.cs" />

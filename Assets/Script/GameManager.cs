@@ -168,6 +168,12 @@ public class GameManager : MonoBehaviour {
 
     public void ShowResult( bool bClear )
     {
+        // force clear
+        if( gameClearCondi != null && gameClearCondi.IsInfinite() )
+        {
+            bClear = true;
+        }
+
         if (UIManager_InGame.instance != null)
         {
             UIManager_InGame.instance.ShowGameResult(bClear);
@@ -365,7 +371,7 @@ public class GameManager : MonoBehaviour {
                 ShowResult( true );
                 return;
             case EGameResult.Over:
-                ShowResult(false);                
+                ShowResult(false);
                 return;
             case EGameResult.Result:
                 return;

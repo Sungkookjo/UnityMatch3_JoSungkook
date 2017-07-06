@@ -6,6 +6,7 @@ public enum EGameClearCondition
 {
     Score,
     Explode,
+    Infinite,
 }
 
 public class GameClearCondition
@@ -80,7 +81,19 @@ public class GameClearCondition
     {
         if (UIManager_InGame.instance != null)
         {
-            UIManager_InGame.instance.UpdateGameClear(GetTypeStr() + " : " + GetCondStr());
+            if( type == EGameClearCondition.Infinite )
+            {
+                UIManager_InGame.instance.UpdateGameClear( "Infinite" );
+            }
+            else
+            {
+                UIManager_InGame.instance.UpdateGameClear(GetTypeStr() + " : " + GetCondStr());
+            }
         }
+    }
+
+    public bool IsInfinite()
+    {
+        return type == EGameClearCondition.Infinite;
     }
 }

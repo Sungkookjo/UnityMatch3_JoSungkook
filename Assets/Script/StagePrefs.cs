@@ -144,15 +144,15 @@ public class StagePrefs : MonoBehaviour {
 
             #region TileKindNum
             PlayerPrefs.SetInt(GetPrefName(EStageColumn.TileKindNum, 0), 1);
-            PlayerPrefs.SetInt(GetPrefName(EStageColumn.TileKindNum, 1), 6);
-            PlayerPrefs.SetInt(GetPrefName(EStageColumn.TileKindNum, 2), 7);
-            PlayerPrefs.SetInt(GetPrefName(EStageColumn.TileKindNum, 3), 8);
-            PlayerPrefs.SetInt(GetPrefName(EStageColumn.TileKindNum, 4), 9);
-            PlayerPrefs.SetInt(GetPrefName(EStageColumn.TileKindNum, 5), 6);
+            PlayerPrefs.SetInt(GetPrefName(EStageColumn.TileKindNum, 1), 5);
+            PlayerPrefs.SetInt(GetPrefName(EStageColumn.TileKindNum, 2), 6);
+            PlayerPrefs.SetInt(GetPrefName(EStageColumn.TileKindNum, 3), 7);
+            PlayerPrefs.SetInt(GetPrefName(EStageColumn.TileKindNum, 4), 8);
+            PlayerPrefs.SetInt(GetPrefName(EStageColumn.TileKindNum, 5), 5);
             PlayerPrefs.SetInt(GetPrefName(EStageColumn.TileKindNum, 6), 6);
             PlayerPrefs.SetInt(GetPrefName(EStageColumn.TileKindNum, 7), 7);
-            PlayerPrefs.SetInt(GetPrefName(EStageColumn.TileKindNum, 8), 8);
-            PlayerPrefs.SetInt(GetPrefName(EStageColumn.TileKindNum, 9), 9);
+            PlayerPrefs.SetInt(GetPrefName(EStageColumn.TileKindNum, 8), 7);
+            PlayerPrefs.SetInt(GetPrefName(EStageColumn.TileKindNum, 9), 8);
             #endregion
 
         }
