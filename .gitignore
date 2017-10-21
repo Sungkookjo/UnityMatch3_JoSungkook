@@ -7,3 +7,6 @@ Temp/
 *.user
 *.unityproj
 *.booproj
+*.csproj
+*.sin
+
