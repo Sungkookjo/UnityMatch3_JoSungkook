@@ -1,2 +1,9 @@
 Library/
 Temp/
+
+*.userprefs
+*.pidb
+*.suo
+*.user
+*.unityproj
+*.booproj
